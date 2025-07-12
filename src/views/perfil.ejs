@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Mi Perfil</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+  <%- include('partials/navigation') %>
+
+  <div class="container mt-5">
+    <h2>Mi Perfil</h2>
+
+    <h3>Mi Foto</h3>
+
+<% if (usuario.avatar) { %>
+  <img src="/uploads/<%= usuario.avatar %>" class="img-thumbnail" width="150" />
+<% } else { %>
+  <p>No has subido foto aún.</p>
+<% } %>
+
+<form action="/perfil/avatar" method="POST" enctype="multipart/form-data" class="mt-3">
+  <div class="mb-3">
+    <input type="file" name="avatar" accept="image/*" class="form-control" required>
+  </div>
+  <button type="submit" class="btn btn-primary">Subir Foto</button>
+</form>
+
+
+    <div class="card">
+      <div class="card-body">
+        <p><strong>Nick:</strong> <%= usuario.nick %></p>
+        <p><strong>email:</strong> <%= usuario.email %></p>
+        <p><strong>Contraseña:</strong> <%= usuario.password %></p>
+        <% if (usuario.fechaRegistro) { %>
+          <p><strong>Fecha de registro:</strong> <%= usuario.fechaRegistro %></p>
+        <% } %>
+      </div>
+    </div>
+  </div>
+
+  <%- include('partials/footer') %>
+</body>
+</html>

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <style>
+        :root {
+            --dark-bg: #ff0000;
+            --darker-bg: #000000;
+            --card-bg: #1e1e1e;
+            --primary-color: #6200ee;
+            --primary-hover: #7c4dff;
+            --text-primary: #002cf1;
+            --text-secondary: #0d00fb;
+            --border-color: #333;
+        }
+        
+        body {
+            background-color: var(--dark-bg);
+            color: var(--text-primary);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .container {
+            flex: 1;
+            padding-bottom: 2rem;
+        }
+        
+        .card {
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+        
+        .card-img-top {
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .card-title {
+            color: var(--text-primary);
+        }
+        
+        .card-text {
+            color: var(--text-secondary);
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--primary-hover);
+            border-color: var(--primary-hover);
+        }
+        
+        .btn-outline-dark {
+            color: var(--text-primary);
+            border-color: var(--text-primary);
+        }
+        
+        .btn-outline-dark:hover {
+            background-color: var(--text-primary);
+            color: var(--dark-bg);
+        }
+        
+        .display-4 {
+            color: var(--text-primary);
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .lead {
+            color: var(--text-secondary);
+        }
+        
+        h4 {
+            color: var(--text-primary);
+        }
+        
+        .shadow-sm {
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3) !important;
+        }
+        
+        /* Estilos para la navegación y footer (asumiendo que existen) */
+        header, footer {
+            background-color: var(--darker-bg);
+            border-color: var(--border-color) !important;
+        }
+        
+        .nav-link {
+            color: var(--text-secondary) !important;
+        }
+        
+        .nav-link:hover {
+            color: var(--text-primary) !important;
+        }
+        
+        footer {
+            color: var(--text-secondary);
+            border-top: 1px solid var(--border-color);
+        }
+    </style>
+</head>
+<body>
+    <%- include('partials/head') %>
+    <%- include('partials/navigation') %>
+
+    <div class="container mt-5">
+        <div class="text-center mb-5">
+            <h1 class="display-4 fw-bold">Bienvenido a SKYNET</h1>
+            <p class="lead">Encuentra los mejores <strong>computadores</strong>, <strong>celulares</strong> y <strong>televisores</strong> al mejor precio.</p>
+        </div>
+
+        <!-- Sección: Productos Destacados -->
+        <div class="row text-center">
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow-sm">
+                    <img src="/img/GAME.jpg" class="card-img-top" alt="Laptop">
+                    <div class="card-body">
+                        <h5 class="card-title">Computadores</h5>
+                        <p class="card-text">Portátiles y de escritorio de alto rendimiento.</p>
+                        <a href="/product?category=computador" class="btn btn-primary">Ver más</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow-sm">
+                    <img src="/img/ASUS.jpg" class="card-img-top" alt="Celulares">
+                    <div class="card-body">
+                        <h5 class="card-title">Celulares</h5>
+                        <p class="card-text">Smartphones modernos para todas tus necesidades.</p>
+                        <a href="/product?category=celular" class="btn btn-primary">Ver más</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-4">
+                <div class="card h-100 shadow-sm">
+                    <img src="/img/TVQ.jpg" class="card-img-top" alt="Televisores">
+                    <div class="card-body">
+                        <h5 class="card-title">Televisores</h5>
+                        <p class="card-text">Pantallas 4K, Smart TV, LED y más.</p>
+                        <a href="/product?category=televisor" class="btn btn-primary">Ver más</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Sección: Contacto -->
+        <div class="text-center mt-5">
+            <h4>¿Tienes dudas o quieres saber más?</h4>
+            <p>Contáctanos para recibir asesoría personalizada.</p>
+            <a href="/contact" class="btn btn-outline-dark">Ir a Contacto</a>
+        </div>
+    </div>
+
+    <%- include('partials/footer') %>
+</body>
+</html>

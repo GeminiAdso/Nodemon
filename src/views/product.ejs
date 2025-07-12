@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Productos</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <%- include('partials/navigation') %>
+    <%- include('partials/head') %>
+
+    
+    
+    
+  
+
+ <div class="container mt-5">
+    <h2 class="mb-4">Productos Disponibles</h2>
+
+    <% if (productos.length === 0) { %>
+      <div class="alert alert-warning" role="alert">
+        No hay productos disponibles.
+      </div>
+    <% } else { %>
+      <div class="row row-cols-1 row-cols-md-3 g-4">
+        <% productos.forEach(producto => { %>
+          <div class="col">
+            <div class="card h-100">
+              <% if (producto.imagen) { %>
+                <img src="<%= producto.imagen %>" class="card-img-top" alt="Imagen del producto">
+              <% } %>
+              <div class="card-body">
+                <h5 class="card-title"><%= producto.nombre %></h5>
+                <p class="card-text">Categoría: <%= producto.categoria %></p>
+                <p class="card-text">Precio: $<%= producto.precio %></p>
+                <form action="/carrito/agregar/<%= producto.id %>" method="POST">
+                <button type="submit">Agregar al carrito</button>
+                
+                </form>
+              </div>
+            </div>
+          </div>
+        <% }); %>
+      </div>
+    <% } %>
+  </div>
+  
+<%- include('partials/footer') %>
+
+    
+</body>
+</html>
